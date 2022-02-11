@@ -4,9 +4,24 @@ set fish_greeting ""
 alias cls="clear"
 alias v="command vim"
 alias vim="nvim"
+alias ide="vim ."
 alias python="python3"
-alias cl="g++"
 alias ls="exa --group-directories-first --icons"
+alias ll="ls -l --git"
+alias la="ls -la --git"
+alias g="git"
+alias gs="git status"
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push" 
+
+# npm & vim plugin
+alias lsv="open http://localhost:8000/ && python -m http.server"
+alias f="floaterm"
+
+# WSL only
+alias exp="explorer.exe"
+alias open="powershell.exe /c start"
 
 function py -d "Run python script without typing the extension" 
   command python3 $argv.py
@@ -23,5 +38,10 @@ end
 # Themes
 starship init fish | source
 
-# Env variables
-export FZF_DEFAULT_OPTS='-m --height 50% --layout reverse --info inline --border --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+# FZF
+export FZF_DEFAULT_COMMAND='fd --type file --color=always'
+export FZF_DEFAULT_OPTS='-m --ansi --cycle --height 70% --layout reverse --info inline --border'
+
+# fzf.fish
+set fzf_preview_file_cmd bat --color=always --style=plain --line-range=:500 
+
